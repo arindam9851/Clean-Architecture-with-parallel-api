@@ -20,7 +20,7 @@ import javax.inject.Singleton
 object PokemonAppModule {
     @Provides
     @Singleton
-    @Named("pokemonRetrofit")
+    @PokemonApiRetrofit
     fun provideRetrofit(): Retrofit{
         return Retrofit.Builder()
             .baseUrl("https://pokeapi.co/")
@@ -31,7 +31,7 @@ object PokemonAppModule {
 
     @Provides
     @Singleton
-    fun provideApi(@Named("pokemonRetrofit") retrofit: Retrofit) : PokemonApi{
+    fun provideApi(@PokemonApiRetrofit retrofit: Retrofit) : PokemonApi{
         return retrofit.create(PokemonApi::class.java)
     }
 

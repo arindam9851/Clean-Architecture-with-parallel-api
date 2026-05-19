@@ -19,7 +19,7 @@ object CoinAppModule {
 
     @Provides
     @Singleton
-    @Named("coinRetrofit")
+    @CoinApiRetrofit
     fun provideRetrofit(): Retrofit{
         return Retrofit.Builder()
             .baseUrl("https://api.coinpaprika.com/")
@@ -30,7 +30,7 @@ object CoinAppModule {
 
     @Provides
     @Singleton
-    fun provideApi( @Named("coinRetrofit") retrofit: Retrofit) : CoinApi{
+    fun provideApi(@CoinApiRetrofit retrofit: Retrofit) : CoinApi{
         return retrofit.create(CoinApi::class.java)
     }
 
